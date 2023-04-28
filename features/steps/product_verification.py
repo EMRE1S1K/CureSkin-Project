@@ -14,6 +14,6 @@ def click_on_product(context):
     context.app.header.click_on_product()
 
 
-@then('Verify product details page opened and product name is correct')
-def verification_product(context):
-    context.app.search_results.verification_product()
+@then('Verify product details page opened and {search_word} is correct')
+def verification_product(context, search_word):
+    context.app.search_results.verification_product(search_word)
