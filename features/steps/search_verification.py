@@ -15,3 +15,13 @@ def closing_popup(context):
 def click_search_button(context):
     context.app.header.click_on_search_button()
 
+
+@then('Input into search field {text}')
+def input_text(context, text):
+    context.app.header.search_item(text)
+
+
+@then('Verify results have SPF')
+def verification(context):
+    context.app.search_results.verify_results()
+

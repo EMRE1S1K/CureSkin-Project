@@ -1,3 +1,5 @@
+from time import sleep
+
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 #from support.logger import logger
@@ -24,7 +26,7 @@ class Page:
 
     def input_text(self, text, *locator):
         e = self.driver.find_element(*locator)
-        e.clear()
+        # e.clear()
         e.send_keys(text)
         #logger.info(f'Inputting text: {text}')
 

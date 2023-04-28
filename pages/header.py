@@ -32,14 +32,19 @@ class Header(Page):
         product_count = self.find_element(*self.PRODUCT_COUNT)
         print(product_count)
         target_1 = self.find_element(*self.TARGET_1)
-        target_2 = self.find_elements(*self.TARGET_2)
+        # target_2 = self.find_elements(*self.TARGET_2)
         actions = ActionChains(self.driver)
         actions.move_to_element(target_1)
         actions.click_and_hold(target_1)
-        actions.drag_and_drop(target_1, target_2)
-        actions.release(target_2)
+        actions.move_by_offset(-120, 0)
+        # actions.drag_and_drop(target_1, target_2)
+        actions.release()
         actions.perform()
+        sleep(15)
 
     def product_count(self):
         product_count = self.find_element(*self.PRODUCT_COUNT)
         print(product_count)
+
+    def search_item(self, text):
+        self.input_text(text, *self.SEARCH_ICON)
