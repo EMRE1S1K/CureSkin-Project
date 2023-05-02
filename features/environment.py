@@ -13,10 +13,10 @@ def browser_init(context, test_name):
     :param context: Behave context
     :param test_name: scenario.name
     """
-    # service = Service('/Users/emreisik/CureSkin-Project/chromedriver')
-    service = Service('/Users/emreisik/CureSkin-Project/geckodriver')
+    service = Service('/Users/emreisik/CureSkin-Project/chromedriver')
+    # service = Service('/Users/emreisik/CureSkin-Project/geckodriver')
 
-    # context.driver = webdriver.Chrome(service=service)
+    context.driver = webdriver.Chrome(service=service)
     # context.driver = webdriver.Safari()
     # context.driver = webdriver.Firefox(service=service)
     # options = Options()
@@ -31,14 +31,14 @@ def browser_init(context, test_name):
     #     service=service
     # )
 
-    fireFoxOptions = webdriver.FirefoxOptions()
-    fireFoxOptions.set_headless()
-    fireFoxOptions.add_argument('--private')
-    #fireFoxOptions.add_argument('--headless')
-    context.driver = webdriver.Firefox(
-        firefox_options=fireFoxOptions,
-        service=service
-    )
+    # fireFoxOptions = webdriver.FirefoxOptions()
+    # fireFoxOptions.set_headless()
+    # fireFoxOptions.add_argument('--private')
+    # #fireFoxOptions.add_argument('--headless')
+    # context.driver = webdriver.Firefox(
+    #     firefox_options=fireFoxOptions,
+    #     service=service
+    # )
 
 
     ### EventFiringWebDriver - log file ###
@@ -53,18 +53,18 @@ def browser_init(context, test_name):
     # for browerstack ###
     # Register for BrowserStack, then grab it from https://www.browserstack.com/accounts/settings
 
-    # desired_cap = {
-    #     'browserName': 'Chrome',
-    #     'bstack:options': {
-    #         'os': 'Windows',
-    #         'osVersion': '11',
-    #         'sessionName': test_name
-    #     }
-    # }
-    # bs_user ='emreik_8BQhaI'
-    # bs_key = 'ZPjRgU4NMcWimhWsx7JE'
-    # url = f'http://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub'
-    # context.driver = webdriver.Remote(url, desired_capabilities=desired_cap)
+    desired_cap = {
+        'browserName': 'Chrome',
+        'bstack:options': {
+            'os': 'Windows',
+            'osVersion': '11',
+            'sessionName': test_name
+        }
+    }
+    bs_user ='emreik_8BQhaI'
+    bs_key = 'ZPjRgU4NMcWimhWsx7JE'
+    url = f'http://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub'
+    context.driver = webdriver.Remote(url, desired_capabilities=desired_cap)
 
     context.driver.maximize_window()
     context.driver.implicitly_wait(5)
