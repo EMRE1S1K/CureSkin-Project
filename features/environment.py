@@ -1,9 +1,11 @@
 from selenium import webdriver
+from selenium.webdriver.firefox.service import Service
 #from selenium.webdriver.support.events import EventFiringWebDriver
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.chrome.service import Service
 from app.application import Application
 #from support.logger import logger, MyListener
+# from selenium.webdriver.firefox.options import Options
 
 
 def browser_init(context, test_name):
@@ -11,13 +13,15 @@ def browser_init(context, test_name):
     :param context: Behave context
     :param test_name: scenario.name
     """
-    service = Service('/Users/emreisik/CureSkin-Project/chromedriver')
-    # service = Service('https://github.com/EMRE1S1K/python-selenium-automation.git/geckodriver')
+    # service = Service('/Users/emreisik/CureSkin-Project/chromedriver')
+    service = Service('/Users/emreisik/CureSkin-Project/geckodriver')
 
-    context.driver = webdriver.Chrome(service=service)
+    # context.driver = webdriver.Chrome(service=service)
     # context.driver = webdriver.Safari()
     # context.driver = webdriver.Firefox(service=service)
-
+    # options = Options()
+    # options.headless = True
+    # context.driver = webdriver.Firefox(options=options)
 
     # # HEADLESS MODE ####
     # options = webdriver.ChromeOptions()
@@ -26,6 +30,15 @@ def browser_init(context, test_name):
     #     chrome_options=options,
     #     service=service
     # )
+
+    fireFoxOptions = webdriver.FirefoxOptions()
+    fireFoxOptions.set_headless()
+    fireFoxOptions.add_argument('--private')
+    #fireFoxOptions.add_argument('--headless')
+    context.driver = webdriver.Firefox(
+        firefox_options=fireFoxOptions,
+        service=service
+    )
 
 
     ### EventFiringWebDriver - log file ###
