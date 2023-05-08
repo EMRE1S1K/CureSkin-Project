@@ -66,6 +66,11 @@ def browser_init(context, test_name):
     url = f'http://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub'
     context.driver = webdriver.Remote(url, desired_capabilities=desired_cap)
 
+    mobile_emulation = {"deviceName": "Galaxy S5"}
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_experimental_option("mobileEmulation", mobile_emulation)
+    context.driver = webdriver.Chrome(executable_path='/chromedriver.exe', chrome_options=chrome_options)
+
     context.driver.maximize_window()
     context.driver.implicitly_wait(5)
     context.driver.wait = WebDriverWait(context.driver, 10)

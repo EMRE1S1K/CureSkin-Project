@@ -9,6 +9,7 @@ from behave import given, when, then
 def cureskin_product_page(context):
     context.app.main_page.product_page()
 
+
 @then('Click on the 1st product')
 def click_on_product(context):
     context.app.header.click_on_product()

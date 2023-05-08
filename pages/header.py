@@ -9,7 +9,7 @@ from selenium.webdriver.support.ui import Select
 class Header(Page):
     POPUP_EXIT = (By.CSS_SELECTOR, ".popup-close")
     SEARCH_ICON = (By.CSS_SELECTOR, "#shopify-section-header > sticky-header > header > search-modal > details > summary")
-    FIRST_PRODUCT = (By.CSS_SELECTOR, "#product-grid > li:nth-child(1) > div > a")
+    FIRST_PRODUCT = (By.XPATH, "//a[contains (text(), 'Under Eye Gel')]")
     SHOP_ALL = (By.CSS_SELECTOR, "a[href='/collections/all'] span")
     PRODUCT_COUNT = (By.CSS_SELECTOR, "#ProductCount")
     TARGET_1 = (By.CSS_SELECTOR, "div.price-range__thumbs.is-upper")
